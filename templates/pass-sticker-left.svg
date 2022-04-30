@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+  width="100%"
+  height="100%"
+  viewBox="0 0 827 449"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xml:space="preserve"
+  xmlns:serif="http://www.serif.com/"
+  style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+><text
+    x="0.39px"
+    y="122.259px"
+    style="font-family:'Roboto-Black', 'Roboto';font-weight:900;font-size:158.333px;"
+  >Firstname</text>
+  <text
+    x="0.339px"
+    y="248.303px"
+    style="font-family:'Roboto-Light', 'Roboto';font-weight:300;font-size:75px;"
+  >Middlename Lastname</text><g
+    transform="matrix(1,0,0,1,-16.5343,95.3229)"
+  ><text
+      x="17.011px"
+      y="294.579px"
+      style="font-family:'Roboto-Regular', 'Roboto';font-size:83.333px;"
+    >@twitter-handle</text></g></svg>

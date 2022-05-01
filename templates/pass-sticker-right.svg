@@ -12,18 +12,22 @@
   xmlns:serif="http://www.serif.com/"
   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
 ><text
-    x="241.272px"
+    text-anchor="end"
+    x="100%"
     y="122.259px"
-    style="font-family:'Roboto-Black', 'Roboto';font-weight:900;font-size:158.333px;"
-  >Mathieu</text>
+    style="font-family:'Roboto-Bold', 'Roboto';font-weight:700;font-size:158.333px;text-transform:uppercase;"
+    id="firstname"
+  ></text>
   <text
-    x="55.575px"
+    text-anchor="end"
+    x="100%"
     y="248.303px"
     style="font-family:'Roboto-Light', 'Roboto';font-weight:300;font-size:75px;"
-  >Henry James Anderson</text><g
-    transform="matrix(1,0,0,1,-16.5343,95.3229)"
-  ><text
-      x="415.168px"
-      y="294.579px"
-      style="font-family:'Roboto-Regular', 'Roboto';font-size:83.333px;"
-    >@syllaband</text></g></svg>
+    id="lastname"
+  ></text><text
+    text-anchor="end"
+    x="100%"
+    y="374.579px"
+    style="font-family:'Roboto-Medium', 'Roboto';font-weight:500;font-size:83.333px;"
+    id="twitter"
+  ></text></svg>

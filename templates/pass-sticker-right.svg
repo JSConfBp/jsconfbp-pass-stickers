@@ -14,20 +14,20 @@
 ><text
     text-anchor="end"
     x="100%"
-    y="122.259px"
-    style="font-family:'Roboto-Bold', 'Roboto';font-weight:700;font-size:158.333px;text-transform:uppercase;"
+    y="116.259px"
+    style="font-family:'TitilliumWeb-Regular', 'Titillium Web';font-weight:700;font-size:122px;text-transform:uppercase;"
     id="firstname"
   ></text>
   <text
     text-anchor="end"
     x="100%"
     y="248.303px"
-    style="font-family:'Roboto-Light', 'Roboto';font-weight:300;font-size:75px;"
+    style="font-family:'TitilliumWeb-Regular', 'Titillium Web';font-weight:300;font-size:86px;"
     id="lastname"
   ></text><text
     text-anchor="end"
     x="100%"
     y="374.579px"
-    style="font-family:'Roboto-Medium', 'Roboto';font-weight:500;font-size:83.333px;"
+    style="font-family:'TitilliumWeb-Regular', 'Titillium Web';font-weight:500;font-size:80px;"
     id="twitter"
   ></text></svg>

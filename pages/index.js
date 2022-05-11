@@ -16,6 +16,8 @@ export default function Index() {
   const [ showAlert, setShowAlert ] = useState(false);
   const [ showSuccess, setShowSuccess ] = useState(false);
 
+
+  const [ reference, setReference ] = useState('');
   const [ firstname, setFirstName ] = useState('');
   const [ lastname, setLastnameName ] = useState('');
   const [ twitterhandle, setTwitterHandle ] = useState('');
@@ -24,6 +26,37 @@ export default function Index() {
   const handleFinish = () => {
     setWorking(false);
   };
+
+
+  const fetchTicket = async () => {
+    setWorking(!working);
+
+    setFirstName('')
+    setLastnameName('')
+    setTwitterHandle('')
+
+    const res = await fetch(`/api/tickets/${reference}`, {
+      method: 'GET',
+    })
+
+    if (res.status !== 200) {
+      setErrorMessage('Could not get ticket!')
+      setShowAlert(true)
+      setTimeout(() => setShowAlert(false), 5000)
+      setWorking(false);
+      return
+    }
+
+    const data = await res.json()
+      
+    setWorking(false);
+    
+    setFirstName(data.first_name.toUpperCase())
+    setLastnameName(data.last_name)
+    setTwitterHandle(data.twitter)
+  }
+
+
   const handleStart = () => {
     setWorking(!working);
 
@@ -64,6 +97,19 @@ export default function Index() {
           Pass sticker maker
         </Typography>
 
+        <Stack sx={{ width: '100%', marginBottom: 8, marginTop: 8 }} spacing={2}>
+          <TextField 
+            id="ticket-reference" 
+            label="Ticket reference" 
+            placeholder="AAAA-1"
+            variant="outlined" 
+            onChange={event => setReference(event.target.value)}
+            value={reference}
+          />
+  
+          <Button variant="outlined" onClick={fetchTicket} size="large">Get ticket data</Button>
+        </Stack>
+
         <Stack sx={{ width: '100%' }} spacing={2}>
           <TextField 
             id="sticker-firstname" 
@@ -86,7 +132,7 @@ export default function Index() {
             onChange={event => setTwitterHandle(event.target.value)}
             value={twitterhandle}
           />
-          <Button variant="contained" onClick={handleStart}>Print</Button>
+          <Button variant="contained" onClick={handleStart} size="large">Print</Button>
         </Stack>
       </Box>
       <Backdrop
@@ -98,7 +144,10 @@ export default function Index() {
       </Backdrop>
 
       { showAlert && (
-      <Alert severity="error" variant="filled">
+      <Alert severity="error" variant="filled" sx={{
+        position: 'absolute',
+        top: '2rem'
+      }}>
         <AlertTitle>Error</AlertTitle>
         {errorMessage}
       </Alert>)}

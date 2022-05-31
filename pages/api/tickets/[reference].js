@@ -4,16 +4,31 @@ const apiHeaders = {
   "Authorization": `Token token=${process.env.TITO_API_TOKEN}`
 }
 
+
+
+const cache = new Map()
+
+const api = async (url,options) => {
+    if (cache.has(url)) {
+        return cache.get(url)
+    }
+
+    const response = await fetch(url, options)
+    const data = await response.json()
+
+    cache.set(url, data)
+
+    return data
+}
+
 const ticketGenerator = async function *() {
     let page = 1
 
     while (page !== null) {
         console.log(`Loading tickets, page ${page} ...`)
-        let response = await fetch(`https://api.tito.io/v3/jsconf-bp/jsconf-budapest-2022/tickets?page=${page}`, {
+        let data = await api(`https://api.tito.io/v3/jsconf-bp/jsconf-budapest-2022/tickets?page=${page}`, {
             headers: apiHeaders
         })
-        
-        let data = await response.json()
         
         page = data.meta.next_page
         yield data.tickets
@@ -24,12 +39,14 @@ export default async function handler(req, res) {
     if (req.method === 'GET') {    
       try {
         const { reference } = req.query
+
+        const ref = reference.toUpperCase()
         
         const tickets = ticketGenerator()
         
         let foundTicket
         for await (let list of tickets) {
-            foundTicket = list.find(ticket => ticket.reference === reference)
+            foundTicket = list.find(ticket => ticket.reference === ref)
             if (foundTicket) break;
         }
 

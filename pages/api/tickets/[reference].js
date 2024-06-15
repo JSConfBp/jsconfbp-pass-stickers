@@ -26,7 +26,7 @@ const ticketGenerator = async function *() {
 
     while (page !== null) {
         console.log(`Loading tickets, page ${page} ...`)
-        let data = await api(`https://api.tito.io/v3/jsconf-bp/jsconf-budapest-2022/tickets?page=${page}`, {
+        let data = await api(`https://api.tito.io/v3/jsconf-bp/jsconf-budapest-2024/tickets?page=${page}`, {
             headers: apiHeaders
         })
         
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
         
         const { slug } = foundTicket
 
-        let response = await fetch(`https://api.tito.io/v3/jsconf-bp/jsconf-budapest-2022/tickets/${slug}`, {
+        let response = await fetch(`https://api.tito.io/v3/jsconf-bp/jsconf-budapest-2024/tickets/${slug}`, {
           headers: apiHeaders
         })
       
@@ -65,14 +65,12 @@ export default async function handler(req, res) {
           ticket: {
             first_name,
             last_name,
-            responses
           }
         } = await response.json()
 
         res.status(200).json({
           first_name,
-          last_name,
-          twitter: responses?.['twitter-name'] ?? ''
+          last_name
         });
 
       } catch (e) {

@@ -8,8 +8,7 @@ const exec = promisify(require('child_process').exec);
 const scripts = process.cwd() + '/scripts'
 const templates = process.cwd() + '/templates'
 
-const leftTemplate = readFileSync(`${templates}/pass-sticker-left.svg`)
-const rightTemplate = readFileSync(`${templates}/pass-sticker-right.svg`)
+const template = readFileSync(`${templates}/pass-sticker-2024.svg`)
 
 const printer = async (template, data) => {
   const $ = cheerio.load(`${template}`, {
@@ -19,7 +18,6 @@ const printer = async (template, data) => {
 
   $('#firstname').text(data.firstname);
   $('#lastname').text(data.lastname);
-  $('#twitter').text(data.twitterhandle);
 
   await writeFile(`${scripts}/source.svg`, $.html(), { mode: 0o777})
   const { stdout, stderr } = await exec(`./print.sh "${scripts}/source.svg"`, {
@@ -34,8 +32,8 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {    
     try {
       const data = JSON.parse(req.body);
-      await printer(leftTemplate, data);
-      await printer(rightTemplate, data);
+      await printer(template, data);
+      await printer(template, data);
       res.status(200).json({});
     } catch (e) {
       console.error(e);
